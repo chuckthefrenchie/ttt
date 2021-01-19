@@ -120,6 +120,7 @@ body {
 .cell.circle::before {
  width: var(--mark-size);
  height: var(--mark-size);
+ margin-top: 2px; /*should be fixed*/
 }
 
 .board.circle .cell:not(.x):not(.circle):hover::after,
@@ -127,5 +128,36 @@ body {
  width: calc(var(--mark-size) * .7);
  height: calc(var(--mark-size) * .7);
  background-color: white; 
- margin-top: 12px; /*should be fixed*/
+ margin-top: 14px; /*should be fixed*/
+}
+
+.winning-message {
+ display: none;
+ /* display: flex; */
+ position: fixed;
+ top: 0;
+ left: 0;
+ right:0;
+ bottom: 0;
+ background-color: rgba(0, 0, 0, .9);
+ justify-content: center;
+ align-items: center;
+ color: white;
+ font-size: 5rem;
+ flex-direction: column;
+}
+
+.winning-message button {
+ font-size: 2rem;
+ background-color: gray;
+ cursor: pointer;
+ padding: .25em;
+
+}
+.winning-message button:hover {
+ background-color: white;
+}
+
+.winning-message.show {
+ display: flex;
 }
