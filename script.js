@@ -11,11 +11,16 @@
       [2, 4, 6]
   ]
   const cellElements = document.querySelectorAll('[data-cell]');
-  let circleTurn;
+  const board = document.getElementById('board')
+  const winningMessageElement = document.getElementById('winningMessage')
+  const winningMessageTextElement = document.querySelector('[data-winning-massage-text]')
+  let circleTurn
+
+
   startGame()
 
   function startGame(){
-   circleTurn=false;
+   circleTurn=false
    cellElements.forEach(cell => {
     cell.addEventListener('click', handleClick, { once: true })
   })
@@ -26,9 +31,21 @@
     const cell = e.target;
     const currentClass = circleTurn ? CIRCLE_CLASS : X_CLASS
     placeMark(cell, currentClass)
+    if(checkWin(currentClass)){
+    endGame()
+    }
     switchTurn()
     setBoardHoverClass()
   }
+  function endGame(draw) {
+      if(draw){
+
+      }else{
+          winningMessageTextElement.innerText = `${circleTurn ? "O's" : "X's"} Wins!`
+      }
+      winningMessageElement.classList.add('show')
+  }
+
   function placeMark(cell, currentClass) {
       cell.classList.add(currentClass)
   }
@@ -43,4 +60,11 @@
     } else{
         board.classList.add(X_CLASS)
     }
+  }
+  function checkWin(currentClass) {
+      return WINNING_COMBINATIONS.some(combination => {
+          return combination.every(index =>{
+              return cellElements[index].classList.contains(currentClass)
+          })
+      })
   }
