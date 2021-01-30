@@ -62,8 +62,6 @@ body {
  border-bottom: none;
 }
 
-
-
 /*X css*/
 
 .board.x .cell:not(.x):not(.circle):hover:before,
@@ -73,13 +71,13 @@ body {
  content: '';
  width: calc(var(--mark-size) * .15);
  height: var(--mark-size);
- background-color: black;
+ background-color: magenta;
  position: absolute;
 }
  
 .cell.x::before, 
 .cell.x::after {
- background-color: black;
+ background-color: magenta;
 }
 
 .board.x .cell:not(.x):not(.circle):hover::before, 
@@ -120,7 +118,7 @@ body {
 .cell.circle::before {
  width: var(--mark-size);
  height: var(--mark-size);
- margin-top: 2px; /*should be fixed*/
+ margin-top: 2px;
 }
 
 .board.circle .cell:not(.x):not(.circle):hover::after,
@@ -128,12 +126,11 @@ body {
  width: calc(var(--mark-size) * .7);
  height: calc(var(--mark-size) * .7);
  background-color: white; 
- margin-top: 14px; /*should be fixed*/
+ margin-top: 14px; 
 }
 
 .winning-message {
  display: none;
- /* display: flex; */
  position: fixed;
  top: 0;
  left: 0;
